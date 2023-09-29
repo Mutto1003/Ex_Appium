@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20230929 11:50:06.516" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20230929 16:59:30.497" rpa="false" schemaversion="3">
 <suite id="s1" name="Test" source="C:\Users\Entronica\Desktop\Ex_Appium\TestSuite\Test.robot">
-<test id="s1-t1" name="Open YouTube App" line="19">
+<test id="s1-t1" name="Search Detail" line="10">
+<kw name="Open YouTube App" library="commonKeyword">
 <kw name="Open Application" library="AppiumLibrary">
 <arg>remote_url=http://localhost:4723/wd/hub</arg>
 <arg>platformName=${PLATFORM_NAME}</arg>
@@ -20,12 +21,46 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" starttime="20230929 11:50:06.965" endtime="20230929 11:50:23.679"/>
+<status status="PASS" starttime="20230929 16:59:30.809" endtime="20230929 16:59:42.953"/>
 </kw>
-<status status="PASS" starttime="20230929 11:50:06.965" endtime="20230929 11:50:23.679"/>
+<status status="PASS" starttime="20230929 16:59:30.809" endtime="20230929 16:59:42.954"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.ImageView[@content-desc="Search"]</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230929 16:59:45.126" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="Search"]</msg>
+<status status="PASS" starttime="20230929 16:59:42.955" endtime="20230929 16:59:45.126"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.ImageView[@content-desc="Search"]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230929 16:59:45.128" level="INFO">Clicking element 'xpath=//android.widget.ImageView[@content-desc="Search"]'.</msg>
+<msg timestamp="20230929 16:59:46.891" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="Search"]</msg>
+<status status="PASS" starttime="20230929 16:59:45.126" endtime="20230929 16:59:46.891"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//*[contains(@text,'Search YouTube')]</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20230929 16:59:47.395" level="INFO">xpath criteria: //*[contains(@text,'Search YouTube')]</msg>
+<status status="PASS" starttime="20230929 16:59:46.892" endtime="20230929 16:59:47.395"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>xpath=//*[contains(@text,'Search YouTube')]</arg>
+<arg>Mavel</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20230929 16:59:47.399" level="INFO">Typing text 'Mavel' into text field 'xpath=//*[contains(@text,'Search YouTube')]'</msg>
+<msg timestamp="20230929 16:59:48.192" level="INFO">xpath criteria: //*[contains(@text,'Search YouTube')]</msg>
+<status status="PASS" starttime="20230929 16:59:47.396" endtime="20230929 16:59:48.192"/>
+</kw>
+<kw name="Press Keycode" library="AppiumLibrary">
+<arg>66</arg>
+<doc>Sends a press of keycode to the device.</doc>
+<status status="PASS" starttime="20230929 16:59:48.193" endtime="20230929 16:59:49.461"/>
+</kw>
+<status status="PASS" starttime="20230929 16:59:30.808" endtime="20230929 16:59:49.461"/>
 </test>
 <doc>Simple example using AppiumLibrary</doc>
-<status status="PASS" starttime="20230929 11:50:06.518" endtime="20230929 11:50:23.680"/>
+<status status="PASS" starttime="20230929 16:59:30.499" endtime="20230929 16:59:49.464"/>
 </suite>
 <statistics>
 <total>
