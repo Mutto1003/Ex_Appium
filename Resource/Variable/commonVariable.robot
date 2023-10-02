@@ -7,4 +7,7 @@ ${APP_PACKAGE}          com.google.android.youtube
 ${APP_ACTIVITY}         com.google.android.youtube.HomeActivity
 ${automationName}       UiAutomator2
 
-@{input_data}    Home    Shorts    Subscriptions    Library
+@{menu_data}           Home    Shorts    Subscriptions    Library
+
+# name title menu
+${name_menu}            name

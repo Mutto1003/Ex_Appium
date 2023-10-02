@@ -1,2 +1,2 @@
 *** Variables ***
-${Search}           xpath=//android.widget.ImageView[@content-desc="Search"]
+${search}           xpath=//android.widget.ImageView[@content-desc="Search"]

@@ -8,8 +8,8 @@ Library             AppiumLibrary
 *** Test Cases ***
 Search Detail
     Open YouTube App
-    Wait Until Page Contains Element    xpath=//android.widget.ImageView[@content-desc="Search"]
-    Click Element    xpath=//android.widget.ImageView[@content-desc="Search"]
+    Wait Until Page Contains Element    ${search} 
+    Click Element    ${search} 
     Wait Until Page Contains Element    xpath=//*[contains(@text,'Search YouTube')]
     Input Text    xpath=//*[contains(@text,'Search YouTube')]    Mavel
     # Clear Text    xpath=//*[contains(@text,'Mavel')]
@@ -18,34 +18,20 @@ Search Detail
 
 Verify menu Navigation Bar 
     Open YouTube App
-    Wait Until Page Contains Element    xpath=//android.widget.ImageView[@content-desc="Search"]
-    Wait Until Page Contains Element    xpath=//android.widget.Button[@content-desc="Home"]    
-    FOR    ${i}    IN RANGE    0   4     #opt.STEPS
+    Wait Until Page Contains Element    ${search} 
+    # Wait Until Page Contains Element    ${search}   
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*/*[@resource-id='com.google.android.youtube:id/text']  
+    FOR    ${i}    IN RANGE    ${count}     #opt.STEPS
         Wait Until Page Contains Element    xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']
         ${txt_menu}    Get Text    xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']       
-        Should Be Equal As Strings    ${txt_menu}    ${input_data[${i}]}
+        Should Be Equal As Strings    ${txt_menu}    ${menu_data[${i}]}
         # Log    ${input_data[${i}]}     
     END
 
-*** Keywords ***
-Scroll Down
-    # Scroll down by swiping up and down multiple times
-    # You can adjust the coordinates and repeat count based on your app's layout
-    Repeat Keyword
-    ...    5
-    ...    Swipe
-    ...    500
-    ...    1000
-    ...    500
-    ...    500
+Verify click ${name_menu} menu
+    Open YouTube App
+    Wait Until Page Contains Element    ${search} 
+    ${name_menu}    Set Variable    Shorts
+    Clck Manu YouTube App    ${name_menu}    
 
-Scroll Up
-    # Scroll down by swiping up and down multiple times
-    # You can adjust the coordinates and repeat count based on your app's layout
-    Repeat Keyword
-    ...    5
-    ...    Swipe
-    ...    500
-    ...    500
-    ...    500
-    ...    1000
+

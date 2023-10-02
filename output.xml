@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20231002 14:26:26.677" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20231002 16:08:30.287" rpa="false" schemaversion="3">
 <suite id="s1" name="Test" source="c:\Users\Entronica\Desktop\Ex_Appium\TestSuite\Test.robot">
-<test id="s1-t1" name="Verify menu Navigation Bar" line="19">
+<test id="s1-t1" name="Verify click name menu" line="31">
 <kw name="Open YouTube App" library="commonKeyword">
 <kw name="Open Application" library="AppiumLibrary">
 <arg>remote_url=http://localhost:4723/wd/hub</arg>
@@ -21,132 +21,146 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" starttime="20231002 14:26:26.916" endtime="20231002 14:26:40.131"/>
+<status status="PASS" starttime="20231002 16:08:30.557" endtime="20231002 16:08:44.193"/>
 </kw>
-<status status="PASS" starttime="20231002 14:26:26.915" endtime="20231002 14:26:40.132"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//android.widget.ImageView[@content-desc="Search"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 14:26:43.145" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="Search"]</msg>
-<status status="PASS" starttime="20231002 14:26:40.133" endtime="20231002 14:26:43.148"/>
+<status status="PASS" starttime="20231002 16:08:30.556" endtime="20231002 16:08:44.194"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//android.widget.Button[@content-desc="Home"]</arg>
+<arg>${search}</arg>
 <doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 14:26:44.389" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Home"]</msg>
-<status status="PASS" starttime="20231002 14:26:43.149" endtime="20231002 14:26:44.390"/>
+<msg timestamp="20231002 16:08:47.224" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="Search"]</msg>
+<status status="PASS" starttime="20231002 16:08:44.195" endtime="20231002 16:08:47.226"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${name_menu}</var>
+<arg>Shorts</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 16:08:47.227" level="INFO">${name_menu} = Shorts</msg>
+<status status="PASS" starttime="20231002 16:08:47.226" endtime="20231002 16:08:47.227"/>
+</kw>
+<kw name="Clck Manu YouTube App" library="commonKeyword">
+<arg>${name_menu}</arg>
+<doc>Send 'txt_name_menu' to check all menu and verify click menu</doc>
+<kw name="Get Matching Xpath Count" library="AppiumLibrary">
+<var>${count}</var>
+<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*/*[@resource-id='com.google.android.youtube:id/text']</arg>
+<doc>Returns number of elements matching ``xpath``</doc>
+<msg timestamp="20231002 16:08:48.470" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*/*[@resource-id='com.google.android.youtube:id/text']</msg>
+<msg timestamp="20231002 16:08:48.471" level="INFO">${count} = 4</msg>
+<status status="PASS" starttime="20231002 16:08:47.228" endtime="20231002 16:08:48.471"/>
 </kw>
 <for flavor="IN RANGE">
 <var>${i}</var>
-<value>0</value>
-<value>4</value>
+<value>${count}</value>
 <iter>
 <var name="${i}">0</var>
 <kw name="Wait Until Page Contains Element" library="AppiumLibrary">
 <arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']</arg>
 <doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 14:26:44.506" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']</msg>
-<status status="PASS" starttime="20231002 14:26:44.393" endtime="20231002 14:26:44.507"/>
+<msg timestamp="20231002 16:08:48.573" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']</msg>
+<status status="PASS" starttime="20231002 16:08:48.472" endtime="20231002 16:08:48.573"/>
 </kw>
 <kw name="Get Text" library="AppiumLibrary">
 <var>${txt_menu}</var>
 <arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
 <doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<msg timestamp="20231002 14:26:44.682" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Home' </msg>
-<msg timestamp="20231002 14:26:44.682" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 14:26:44.682" level="INFO">${txt_menu} = Home</msg>
-<status status="PASS" starttime="20231002 14:26:44.507" endtime="20231002 14:26:44.683"/>
+<msg timestamp="20231002 16:08:48.727" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Home' </msg>
+<msg timestamp="20231002 16:08:48.727" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']/*[@resource-id='com.google.android.youtube:id/text']</msg>
+<msg timestamp="20231002 16:08:48.728" level="INFO">${txt_menu} = Home</msg>
+<status status="PASS" starttime="20231002 16:08:48.574" endtime="20231002 16:08:48.728"/>
 </kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal As Strings</arg>
+<arg>${txt_menu}</arg>
+<arg>${txt_name_menu}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${txt_menu}</arg>
-<arg>${input_data[${i}]}</arg>
+<arg>${txt_name_menu}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20231002 14:26:44.683" endtime="20231002 14:26:44.684"/>
+<msg timestamp="20231002 16:08:48.729" level="FAIL">Home != Shorts</msg>
+<status status="FAIL" starttime="20231002 16:08:48.728" endtime="20231002 16:08:48.729"/>
 </kw>
-<status status="PASS" starttime="20231002 14:26:44.392" endtime="20231002 14:26:44.684"/>
+<msg timestamp="20231002 16:08:48.729" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20231002 16:08:48.728" endtime="20231002 16:08:48.729"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'True'</arg>
+<arg>Click Element</arg>
+<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20231002 16:08:48.731" endtime="20231002 16:08:48.731"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>'${status}' == 'True'</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20231002 16:08:48.732" endtime="20231002 16:08:48.732"/>
+</kw>
+<status status="PASS" starttime="20231002 16:08:48.472" endtime="20231002 16:08:48.732"/>
 </iter>
 <iter>
 <var name="${i}">1</var>
 <kw name="Wait Until Page Contains Element" library="AppiumLibrary">
 <arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']</arg>
 <doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 14:26:44.878" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']</msg>
-<status status="PASS" starttime="20231002 14:26:44.685" endtime="20231002 14:26:44.879"/>
+<msg timestamp="20231002 16:08:48.829" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']</msg>
+<status status="PASS" starttime="20231002 16:08:48.733" endtime="20231002 16:08:48.830"/>
 </kw>
 <kw name="Get Text" library="AppiumLibrary">
 <var>${txt_menu}</var>
 <arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
 <doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<msg timestamp="20231002 14:26:45.486" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Shorts' </msg>
-<msg timestamp="20231002 14:26:45.487" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 14:26:45.487" level="INFO">${txt_menu} = Shorts</msg>
-<status status="PASS" starttime="20231002 14:26:44.879" endtime="20231002 14:26:45.487"/>
+<msg timestamp="20231002 16:08:49.254" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Shorts' </msg>
+<msg timestamp="20231002 16:08:49.254" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']</msg>
+<msg timestamp="20231002 16:08:49.254" level="INFO">${txt_menu} = Shorts</msg>
+<status status="PASS" starttime="20231002 16:08:48.830" endtime="20231002 16:08:49.255"/>
 </kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal As Strings</arg>
+<arg>${txt_menu}</arg>
+<arg>${txt_name_menu}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${txt_menu}</arg>
-<arg>${input_data[${i}]}</arg>
+<arg>${txt_name_menu}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20231002 14:26:45.488" endtime="20231002 14:26:45.491"/>
+<status status="PASS" starttime="20231002 16:08:49.255" endtime="20231002 16:08:49.256"/>
 </kw>
-<status status="PASS" starttime="20231002 14:26:44.685" endtime="20231002 14:26:45.491"/>
-</iter>
-<iter>
-<var name="${i}">2</var>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 14:26:45.596" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='2']</msg>
-<status status="PASS" starttime="20231002 14:26:45.491" endtime="20231002 14:26:45.597"/>
+<msg timestamp="20231002 16:08:49.256" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20231002 16:08:49.255" endtime="20231002 16:08:49.256"/>
 </kw>
-<kw name="Get Text" library="AppiumLibrary">
-<var>${txt_menu}</var>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'True'</arg>
+<arg>Click Element</arg>
 <arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<msg timestamp="20231002 14:26:45.783" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='2']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Subscriptions' </msg>
-<msg timestamp="20231002 14:26:45.784" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='2']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 14:26:45.784" level="INFO">${txt_menu} = Subscriptions</msg>
-<status status="PASS" starttime="20231002 14:26:45.597" endtime="20231002 14:26:45.785"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${txt_menu}</arg>
-<arg>${input_data[${i}]}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20231002 14:26:45.785" endtime="20231002 14:26:45.789"/>
-</kw>
-<status status="PASS" starttime="20231002 14:26:45.491" endtime="20231002 14:26:45.790"/>
-</iter>
-<iter>
-<var name="${i}">3</var>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 14:26:45.881" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='3']</msg>
-<status status="PASS" starttime="20231002 14:26:45.790" endtime="20231002 14:26:45.881"/>
-</kw>
-<kw name="Get Text" library="AppiumLibrary">
-<var>${txt_menu}</var>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="AppiumLibrary">
 <arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<msg timestamp="20231002 14:26:46.019" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='3']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Library' </msg>
-<msg timestamp="20231002 14:26:46.019" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='3']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 14:26:46.020" level="INFO">${txt_menu} = Library</msg>
-<status status="PASS" starttime="20231002 14:26:45.882" endtime="20231002 14:26:46.020"/>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 16:08:49.258" level="INFO">Clicking element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']'.</msg>
+<msg timestamp="20231002 16:08:49.736" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']</msg>
+<status status="PASS" starttime="20231002 16:08:49.256" endtime="20231002 16:08:49.737"/>
 </kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${txt_menu}</arg>
-<arg>${input_data[${i}]}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20231002 14:26:46.020" endtime="20231002 14:26:46.023"/>
+<status status="PASS" starttime="20231002 16:08:49.256" endtime="20231002 16:08:49.737"/>
 </kw>
-<status status="PASS" starttime="20231002 14:26:45.790" endtime="20231002 14:26:46.023"/>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>'${status}' == 'True'</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20231002 16:08:49.738" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20231002 16:08:49.737" endtime="20231002 16:08:49.738"/>
+</kw>
+<status status="PASS" starttime="20231002 16:08:48.733" endtime="20231002 16:08:49.738"/>
 </iter>
-<status status="PASS" starttime="20231002 14:26:44.390" endtime="20231002 14:26:46.023"/>
+<status status="PASS" starttime="20231002 16:08:48.471" endtime="20231002 16:08:49.738"/>
 </for>
-<status status="PASS" starttime="20231002 14:26:26.914" endtime="20231002 14:26:46.024"/>
+<status status="PASS" starttime="20231002 16:08:47.228" endtime="20231002 16:08:49.738"/>
+</kw>
+<status status="PASS" starttime="20231002 16:08:30.556" endtime="20231002 16:08:49.739"/>
 </test>
 <doc>Simple example using AppiumLibrary</doc>
-<status status="PASS" starttime="20231002 14:26:26.683" endtime="20231002 14:26:46.026"/>
+<status status="PASS" starttime="20231002 16:08:30.296" endtime="20231002 16:08:49.741"/>
 </suite>
 <statistics>
 <total>
