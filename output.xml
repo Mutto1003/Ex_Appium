@@ -1,166 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20231002 16:08:30.287" rpa="false" schemaversion="3">
-<suite id="s1" name="Test" source="c:\Users\Entronica\Desktop\Ex_Appium\TestSuite\Test.robot">
-<test id="s1-t1" name="Verify click name menu" line="31">
-<kw name="Open YouTube App" library="commonKeyword">
-<kw name="Open Application" library="AppiumLibrary">
-<arg>remote_url=http://localhost:4723/wd/hub</arg>
-<arg>platformName=${PLATFORM_NAME}</arg>
-<arg>platformVersion=${PLATFORM_VERSION}</arg>
-<arg>deviceName=${DEVICE_NAME}</arg>
-<arg>appPackage=${APP_PACKAGE}</arg>
-<arg>appActivity=${APP_ACTIVITY}</arg>
-<arg>automationName=${automationName}</arg>
-<arg>noReset=true</arg>
-<arg>unicodeKeyboard=true</arg>
-<arg>newCommandTimeout=5000</arg>
-<doc>Opens a new application to given Appium server.
-Capabilities of appium server, Android and iOS,
-Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
-| *Option*            | *Man.* | *Description*     |
-| remote_url          | Yes    | Appium server url |
-| alias               | no     | alias             |
-| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" starttime="20231002 16:08:30.557" endtime="20231002 16:08:44.193"/>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20231012 16:05:21.122" rpa="false" schemaversion="3">
+<suite id="s1" name="TestApi" source="c:\Users\Entronica\Desktop\Ex_Appium\TestSuite\TestApi.robot">
+<test id="s1-t1" name="Patch Request Test" line="46">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>dummyjson</arg>
+<arg>https://dummyjson.com/products</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231012 16:05:21.340" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com/products, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231012 16:05:21.340" endtime="20231012 16:05:21.343"/>
 </kw>
-<status status="PASS" starttime="20231002 16:08:30.556" endtime="20231002 16:08:44.194"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data}</var>
+<arg>title=TEST</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231012 16:05:21.344" level="INFO">&amp;{data} = { title=TEST }</msg>
+<status status="PASS" starttime="20231012 16:05:21.343" endtime="20231012 16:05:21.344"/>
 </kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>${search}</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 16:08:47.224" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="Search"]</msg>
-<status status="PASS" starttime="20231002 16:08:44.195" endtime="20231002 16:08:47.226"/>
+<kw name="PATCH On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>dummyjson</arg>
+<arg>/1</arg>
+<arg>json=${data}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a PATCH request on a previously created HTTP Session.</doc>
+<msg timestamp="20231012 16:05:21.973" level="INFO">PATCH Request : url=https://dummyjson.com/products/1 
+ path_url=/products/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '17', 'Content-Type': 'application/json'} 
+ body=b'{"title": "TEST"}' 
+ </msg>
+<msg timestamp="20231012 16:05:21.973" level="INFO">PATCH Response : url=https://dummyjson.com/products/1 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '120', 'x-ratelimit-remaining': '117', 'date': 'Thu, 12 Oct 2023 09:05:22 GMT', 'x-ratelimit-reset': '1697101555', 'content-type': 'application/json; charset=utf-8', 'content-length': '488', 'etag': 'W/"1e8-lmNnOBgFtoSD/+jhHrvb6z7Telc"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
+ body={"id":1,"title":"TEST","price":549,"stock":94,"rating":4.69,"images":["https://i.dummyjson.com/data/products/1/1.jpg","https://i.dummyjson.com/data/products/1/2.jpg","https://i.dummyjson.com/data/products/1/3.jpg","https://i.dummyjson.com/data/products/1/4.jpg","https://i.dummyjson.com/data/products/1/thumbnail.jpg"],"thumbnail":"https://i.dummyjson.com/data/products/1/thumbnail.jpg","description":"An apple mobile which is nothing like apple","brand":"Apple","category":"smartphones"} 
+ </msg>
+<msg timestamp="20231012 16:05:21.973" level="INFO">C:\Users\Entronica\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dummyjson.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231012 16:05:21.973" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231012 16:05:21.344" endtime="20231012 16:05:21.973"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${name_menu}</var>
-<arg>Shorts</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231002 16:08:47.227" level="INFO">${name_menu} = Shorts</msg>
-<status status="PASS" starttime="20231002 16:08:47.226" endtime="20231002 16:08:47.227"/>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20231012 16:05:21.973" endtime="20231012 16:05:21.973"/>
 </kw>
-<kw name="Clck Manu YouTube App" library="commonKeyword">
-<arg>${name_menu}</arg>
-<doc>Send 'txt_name_menu' to check all menu and verify click menu</doc>
-<kw name="Get Matching Xpath Count" library="AppiumLibrary">
-<var>${count}</var>
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Returns number of elements matching ``xpath``</doc>
-<msg timestamp="20231002 16:08:48.470" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 16:08:48.471" level="INFO">${count} = 4</msg>
-<status status="PASS" starttime="20231002 16:08:47.228" endtime="20231002 16:08:48.471"/>
+<kw name="Log" library="BuiltIn">
+<arg>${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231012 16:05:21.989" level="INFO">{'id': 1, 'title': 'TEST', 'price': 549, 'stock': 94, 'rating': 4.69, 'images': ['https://i.dummyjson.com/data/products/1/1.jpg', 'https://i.dummyjson.com/data/products/1/2.jpg', 'https://i.dummyjson.com/data/products/1/3.jpg', 'https://i.dummyjson.com/data/products/1/4.jpg', 'https://i.dummyjson.com/data/products/1/thumbnail.jpg'], 'thumbnail': 'https://i.dummyjson.com/data/products/1/thumbnail.jpg', 'description': 'An apple mobile which is nothing like apple', 'brand': 'Apple', 'category': 'smartphones'}</msg>
+<status status="PASS" starttime="20231012 16:05:21.973" endtime="20231012 16:05:21.989"/>
 </kw>
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>${count}</value>
-<iter>
-<var name="${i}">0</var>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 16:08:48.573" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']</msg>
-<status status="PASS" starttime="20231002 16:08:48.472" endtime="20231002 16:08:48.573"/>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>title</arg>
+<arg>TEST</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20231012 16:05:21.989" endtime="20231012 16:05:21.991"/>
 </kw>
-<kw name="Get Text" library="AppiumLibrary">
-<var>${txt_menu}</var>
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<msg timestamp="20231002 16:08:48.727" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Home' </msg>
-<msg timestamp="20231002 16:08:48.727" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='0']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 16:08:48.728" level="INFO">${txt_menu} = Home</msg>
-<status status="PASS" starttime="20231002 16:08:48.574" endtime="20231002 16:08:48.728"/>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<var>${status}</var>
-<arg>Should Be Equal As Strings</arg>
-<arg>${txt_menu}</arg>
-<arg>${txt_name_menu}</arg>
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${txt_menu}</arg>
-<arg>${txt_name_menu}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<msg timestamp="20231002 16:08:48.729" level="FAIL">Home != Shorts</msg>
-<status status="FAIL" starttime="20231002 16:08:48.728" endtime="20231002 16:08:48.729"/>
-</kw>
-<msg timestamp="20231002 16:08:48.729" level="INFO">${status} = False</msg>
-<status status="PASS" starttime="20231002 16:08:48.728" endtime="20231002 16:08:48.729"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${status}' == 'True'</arg>
-<arg>Click Element</arg>
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231002 16:08:48.731" endtime="20231002 16:08:48.731"/>
-</kw>
-<kw name="Exit For Loop If" library="BuiltIn">
-<arg>'${status}' == 'True'</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" starttime="20231002 16:08:48.732" endtime="20231002 16:08:48.732"/>
-</kw>
-<status status="PASS" starttime="20231002 16:08:48.472" endtime="20231002 16:08:48.732"/>
-</iter>
-<iter>
-<var name="${i}">1</var>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20231002 16:08:48.829" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']</msg>
-<status status="PASS" starttime="20231002 16:08:48.733" endtime="20231002 16:08:48.830"/>
-</kw>
-<kw name="Get Text" library="AppiumLibrary">
-<var>${txt_menu}</var>
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<msg timestamp="20231002 16:08:49.254" level="INFO">Element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']' text is 'Shorts' </msg>
-<msg timestamp="20231002 16:08:49.254" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<msg timestamp="20231002 16:08:49.254" level="INFO">${txt_menu} = Shorts</msg>
-<status status="PASS" starttime="20231002 16:08:48.830" endtime="20231002 16:08:49.255"/>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<var>${status}</var>
-<arg>Should Be Equal As Strings</arg>
-<arg>${txt_menu}</arg>
-<arg>${txt_name_menu}</arg>
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${txt_menu}</arg>
-<arg>${txt_name_menu}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20231002 16:08:49.255" endtime="20231002 16:08:49.256"/>
-</kw>
-<msg timestamp="20231002 16:08:49.256" level="INFO">${status} = True</msg>
-<status status="PASS" starttime="20231002 16:08:49.255" endtime="20231002 16:08:49.256"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${status}' == 'True'</arg>
-<arg>Click Element</arg>
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='${i}']/*[@resource-id='com.google.android.youtube:id/text']</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20231002 16:08:49.258" level="INFO">Clicking element 'xpath=//*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']'.</msg>
-<msg timestamp="20231002 16:08:49.736" level="INFO">xpath criteria: //*[@resource-id='com.google.android.youtube:id/pivot_bar']/*/*[@index='1']/*[@resource-id='com.google.android.youtube:id/text']</msg>
-<status status="PASS" starttime="20231002 16:08:49.256" endtime="20231002 16:08:49.737"/>
-</kw>
-<status status="PASS" starttime="20231002 16:08:49.256" endtime="20231002 16:08:49.737"/>
-</kw>
-<kw name="Exit For Loop If" library="BuiltIn">
-<arg>'${status}' == 'True'</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<msg timestamp="20231002 16:08:49.738" level="INFO">Exiting for loop altogether.</msg>
-<status status="PASS" starttime="20231002 16:08:49.737" endtime="20231002 16:08:49.738"/>
-</kw>
-<status status="PASS" starttime="20231002 16:08:48.733" endtime="20231002 16:08:49.738"/>
-</iter>
-<status status="PASS" starttime="20231002 16:08:48.471" endtime="20231002 16:08:49.738"/>
-</for>
-<status status="PASS" starttime="20231002 16:08:47.228" endtime="20231002 16:08:49.738"/>
-</kw>
-<status status="PASS" starttime="20231002 16:08:30.556" endtime="20231002 16:08:49.739"/>
+<status status="PASS" starttime="20231012 16:05:21.340" endtime="20231012 16:05:21.991"/>
 </test>
 <doc>Simple example using AppiumLibrary</doc>
-<status status="PASS" starttime="20231002 16:08:30.296" endtime="20231002 16:08:49.741"/>
+<status status="PASS" starttime="20231012 16:05:21.128" endtime="20231012 16:05:21.993"/>
 </suite>
 <statistics>
 <total>
@@ -169,7 +69,7 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Test">Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestApi">TestApi</stat>
 </suite>
 </statistics>
 <errors>
