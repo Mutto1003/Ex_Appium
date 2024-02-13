@@ -1,0 +1,52 @@
+Localized: EN
+# Headless: False
+TimeoutDefult: 60s
+Timeout10s: 10s
+Timeout15s: 15s
+TimeoutReturnStatus: 3s
+Wait_State_Timeout: 30s
+DevicesSystem: iOS 
+LimitWhileLoopDefault: 10
+ 
+# ios_config_iphone:
+#   remote_url: http://localhost:4723/wd/hub
+#   alias: iPadMini6
+#   platformName: iOS
+#   platformVersion: '15.3'
+#   deviceName: iPad
+#   app: th.co.mimotech.tvos.aisplay
+#   udid: 00008110-000549C40E05801E   
+
+ios_config_iphone:
+  remote_url: http://localhost:4723/wd/hub
+  alias: iPhone11
+  platformName: iOS
+  platformVersion: '16.6.1'
+  deviceName: Mut To
+  app: com.ais.mimo.AISPlaybox
+  udid: 00008020-0013145A3485002E   
+
+User:              
+  LocationCode: '1100'
+  EmployeeId: '00037743'
+
+SuiteLogin:
+  mobile_number: 0937060150
+  bypass_otp: 1111
+
+telephone:
+  ais_pack_01: 0937060163           # L3
+  ais_pack_02: 0937060150           # L2
+  ais_nopack_01: 0659331001         # L1
+  ais_nopack_02: 0659331002         # L1
+  non_ais_pack_01: 0618254337       # L3
+  non_ais_pack_02: 0997840488       # L3
+  non_ais_nopack_03: 0997840489
+
+phone:
+  non_ais_1: 0618254337
+  ais_1: 0937060150
+  contact_number: 0937060150
+  fbbid: 8850098745
+
+bypass_otp: 1111
