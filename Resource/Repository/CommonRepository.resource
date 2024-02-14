@@ -68,6 +68,7 @@ ${mnu_bar_genremovies}              xpath=//XCUIElementTypeStaticText[@name="ป
 ${mnu_bar_livetv}                   xpath=//XCUIElementTypeStaticText[@name="ทีวี" or @name="LIVE TV"]
 ${mnu_bar_apps}                     xpath=//XCUIElementTypeStaticText[@name="APPS"]
 
+
 #Logout
 ${lbl_do_you_really_want_to_logout}         chain=**/XCUIElementTypeTextView[`label == "Do you really want to logout?" or label == "คุณต้องการออกจากระบบ ?"`]
 ${btn_ok_logout}                            chain=**/XCUIElementTypeStaticText[`label == "OK" or label == "ตกลง"`]
