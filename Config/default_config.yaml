@@ -17,14 +17,23 @@ LimitWhileLoopDefault: 10
 #   app: th.co.mimotech.tvos.aisplay
 #   udid: 00008110-000549C40E05801E   
 
+# ios_config_iphone:
+#   remote_url: http://localhost:4723/wd/hub
+#   alias: iPhone11
+#   platformName: iOS
+#   platformVersion: '16.6.1'
+#   deviceName: Mut To
+#   app: com.ais.mimo.AISPlaybox
+#   udid: 00008020-0013145A3485002E   
+
 ios_config_iphone:
   remote_url: http://localhost:4723/wd/hub
-  alias: iPhone11
+  alias: iPhone14 Pro
   platformName: iOS
-  platformVersion: '16.6.1'
-  deviceName: Mut To
-  app: com.ais.mimo.AISPlaybox
-  udid: 00008020-0013145A3485002E   
+  platformVersion: '16.3'
+  deviceName: Iphone’s New my Car
+  app: com.tisconet.mo5.v2
+  udid: 00008120-001854483408201E
 
 User:              
   LocationCode: '1100'
